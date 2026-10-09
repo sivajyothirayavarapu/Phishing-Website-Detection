@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}PhishShield — URL Detector{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">CYBERSECURITY PROJECT</p>
+    <h1>Phishing Website Detection</h1>
+    <p class="subtitle">Analyze the structure of a URL with machine learning and explainable warning signals.</p>
+  </div>
+</section>
+
+<section class="card">
+  <form action="{{ url_for('form_predict') }}" method="post" class="url-form">
+    <label for="url">Enter a URL</label>
+    <div class="input-row">
+      <input id="url" name="url" type="text" maxlength="4096" required placeholder="https://example.com/login">
+      <button type="submit">Analyze URL</button>
+    </div>
+    <p class="hint">Example for a demo: <code>https://account-verify.example.test/login</code></p>
+  </form>
+</section>
+
+<section class="grid three">
+  <article class="card mini"><h3>🔎 URL features</h3><p>Length, symbols, host structure, HTTPS, IP usage, entropy and suspicious terms.</p></article>
+  <article class="card mini"><h3>🌲 Random Forest</h3><p>A supervised classifier trained on the included educational dataset.</p></article>
+  <article class="card mini"><h3>🛡️ Safe by design</h3><p>The server does not open or fetch the URL you submit.</p></article>
+</section>
+
+<section class="card disclaimer">
+  <strong>Important:</strong> This is an educational baseline. A prediction is not proof that a site is malicious or safe.
+</section>
+{% endblock %}
